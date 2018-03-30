@@ -21,4 +21,34 @@ var apiRequest = function(path, method) {
   httpRequest.send()
 }
 
+httpRequest.open('GET', apiUrl + 'vapid/companies');
+request.responseType = 'text'; // now we're getting a string!
+request.send();
+
+httpRequest.onload = function() {
+  var companyidText = httpRequest.response; // get the string from the response
+  var companyid = JSON.parse(companyidText); // convert it to an object
+  populateHeader(companyid);
+  showHeroes(companyid);
+}
+
+httpRequest.onload = function() {
+  var id = httpRequest.response;
+  populateHeader(id);
+  showid(id);
+}
+
+
+
+function populateHeader(jsonObj) {
+  var seattleid = document.createElement('seattleid');
+  myseattleid.textContent = jsonObj['id'];
+  header.appendChild(myH1);
+
+  var myPara = document.createElement('p');
+  myPara.textContent = 'Hometown: ' + jsonObj['homeTown'] + ' // Formed: ' + jsonObj['formed'];
+  header.appendChild(myPara);
+}
+
+
 apiRequest('/vapid/companies')
