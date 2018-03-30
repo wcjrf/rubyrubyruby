@@ -1,5 +1,5 @@
-require 'sinatra/reloader'
-require 'pry'
+require 'sinatra/reloader' if development?
+require 'pry' if development?
 require 'json'
 
 class App < Sinatra::Base
@@ -24,7 +24,7 @@ class App < Sinatra::Base
   end
 
   def redirect_uri
-    ENV.fetch('PROCORE_OAUTH2_REDIRECT_URI')
+    ENV.fetch('PROCORE_OAUTH2_REDIRECT_URI') {'http://localhost:5000/callback'}
   end
 
   def authorized_api_request(path, query_string=nil)
