@@ -22,8 +22,8 @@ var apiRequest = function(path, method) {
 }
 
 httpRequest.open('GET', apiUrl + 'vapid/companies');
-request.responseType = 'text'; // now we're getting a string!
-request.send();
+httpRequest.responseType = 'text'; // now we're getting a string!
+httpRequest.send();
 
 httpRequest.onload = function() {
   var companyidText = httpRequest.response; // get the string from the response
