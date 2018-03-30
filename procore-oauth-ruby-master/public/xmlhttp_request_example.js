@@ -14,8 +14,8 @@ var apiRequest = function(path, method) {
   path = path || '/vapid/companies'
   console.info(method, apiUrl + path)
   var httpRequest = new XMLHttpRequest()
+    httpRequest.withCredentials = true;
   httpRequest.open(method, apiUrl + path, true)
-  httpRequest.withCredentials = 'true';
   httpRequest.setRequestHeader('Authorization', 'Bearer '+ localStorage.getItem('accessToken'))
   httpRequest.onreadystatechange = logResponse(httpRequest)
   httpRequest.send(data)
