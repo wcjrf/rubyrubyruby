@@ -19,6 +19,11 @@ var apiRequest = function(path, method) {
   httpRequest.setRequestHeader('Authorization', 'Bearer '+ localStorage.getItem('accessToken'))
   httpRequest.onreadystatechange = logResponse(httpRequest)
   httpRequest.send()
+  httpRequest.onload = function() {
+    var companyidText = httpRequest.response; // get the string from the response
+    var companyid = JSON.parse(companyidText); // convert it to an object
+    populateHeader(companyid);
+    showid(companyid);
 }
 
 logResponse.open('GET', apiUrl + 'vapid/companies');
