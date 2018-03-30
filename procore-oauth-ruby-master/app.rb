@@ -79,6 +79,7 @@ __END__
 <!doctype html>
 <html class="no-js" lang="">
     <head>
+       <Header set Access-Control-Allow-Origin: *>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <title>Oauth Sample Client</title>
@@ -89,7 +90,7 @@ __END__
           var apiUrl = '<%= "#{ENV['PROCORE_API_URL']}" %>'
           var authHeader = 'Bearer <%= session[:access_token] %>'
         </script>
-        <script src="xmlhttp_request_example.js" charset="utf-8"></script> 
+        <script src="xmlhttp_request_example.js" charset="utf-8"></script>
         <!-- <script src="fetch_example.js" charset="utf-8"></script>-->
       <% end %>
     </head>
