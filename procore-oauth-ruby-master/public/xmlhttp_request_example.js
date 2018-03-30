@@ -7,6 +7,8 @@ var logResponse = function (http) {
   }
 }
 
+var data = null;
+
 var apiRequest = function(path, method) {
   method = method || 'GET'
   path = path || '/vapid/companies'
@@ -15,7 +17,7 @@ var apiRequest = function(path, method) {
   httpRequest.open(method, apiUrl + path, true)
   httpRequest.setRequestHeader('Authorization', 'Bearer '+ localStorage.getItem('accessToken'))
   httpRequest.onreadystatechange = logResponse(httpRequest)
-  httpRequest.send(null)
+  httpRequest.send(data)
 }
 
 apiRequest('/vapid/companies')
