@@ -13,9 +13,9 @@ class App < Sinatra::Base
 
   def client(token_method = :post)
     OAuth2::Client.new(
-      ENV.fetch('PROCORE_CLIENT_ID', 'proauth-local'),
-      ENV.fetch('PROCORE_CLIENT_SECRET', 'pleaseUseA4RealSecret.'),
-      site: ENV.fetch('PROCORE_API_URL') {"http://localhost:3000"},
+      ENV.fetch('PROCORE_CLIENT_ID'),
+      ENV.fetch('PROCORE_CLIENT_SECRET'),
+      site: ENV.fetch('PROCORE_API_URL'),
     )
   end
 
@@ -79,7 +79,6 @@ __END__
 <!doctype html>
 <html class="no-js" lang="">
     <head>
-       <Header set Access-Control-Allow-Origin: *>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <title>Oauth Sample Client</title>
@@ -88,7 +87,7 @@ __END__
       <% if session[:access_token] %>
         <script type="text/javascript">
           var apiUrl = '<%= "#{ENV['PROCORE_API_URL']}" %>'
-          var authHeader = 'Bearer <%= session[:access_token] %>'
+          var authHeader = session[:access_token] %>'
         </script>
         <script src="xmlhttp_request_example.js" charset="utf-8"></script>
         <!-- <script src="fetch_example.js" charset="utf-8"></script>-->
