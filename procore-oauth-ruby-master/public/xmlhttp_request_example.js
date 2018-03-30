@@ -21,12 +21,12 @@ var apiRequest = function(path, method) {
   httpRequest.send()
 }
 
-httpRequest.open('GET', apiUrl + 'vapid/companies');
-httpRequest.responseType = 'text'; // now we're getting a string!
-httpRequest.send();
+apiRequest.open('GET', apiUrl + 'vapid/companies');
+apiRequest.responseType = 'text'; // now we're getting a string!
+apiRequest.send();
 
-httpRequest.onload = function() {
-  var companyidText = httpRequest.response; // get the string from the response
+apiRequest.onload = function() {
+  var companyidText = apiRequest.response; // get the string from the response
   var companyid = JSON.parse(companyidText); // convert it to an object
   populateHeader(companyid);
   showHeroes(companyid);
