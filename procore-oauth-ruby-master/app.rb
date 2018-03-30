@@ -1,5 +1,5 @@
-require 'sinatra/reloader' if development?
-require 'pry' if development?
+require 'sinatra/reloader'
+require 'pry'
 require 'json'
 
 class App < Sinatra::Base
@@ -24,7 +24,7 @@ class App < Sinatra::Base
   end
 
   def redirect_uri
-    ENV.fetch('PROCORE_OAUTH2_REDIRECT_URI') {'http://localhost:5000/callback'}
+    ENV.fetch('PROCORE_OAUTH2_REDIRECT_URI')
   end
 
   def authorized_api_request(path, query_string=nil)
@@ -87,9 +87,9 @@ __END__
       <% if session[:access_token] %>
         <script type="text/javascript">
           var apiUrl = '<%= "#{ENV['PROCORE_API_URL']}" %>'
-          var authHeader = session[:access_token] %>'
+          var authHeader = 'Bearer <%= session[:access_token] %>'
         </script>
-        <script src="xmlhttp_request_example.js" charset="utf-8"></script>
+        <!--<script src="xmlhttp_request_example.js" charset="utf-8"></script>-->
         <!-- <script src="fetch_example.js" charset="utf-8"></script>-->
       <% end %>
     </head>
