@@ -18,7 +18,7 @@ var apiRequest = function(path, method) {
   httpRequest.open(method, apiUrl + path, true)
   httpRequest.setRequestHeader('Authorization', 'Bearer '+ localStorage.getItem('accessToken'))
   httpRequest.onreadystatechange = logResponse(httpRequest)
-  httpRequest.send(data)
+  httpRequest.send()
 }
 
 apiRequest('/vapid/companies')
