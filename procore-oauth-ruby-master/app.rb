@@ -35,8 +35,6 @@ class App < Sinatra::Base
       })
   end
 
-attr_accessor :company_id, :company_name, :active
-  @company_id = 9340
 
   get '/' do
     erb :home
@@ -64,11 +62,6 @@ attr_accessor :company_id, :company_name, :active
     session[:access_token]  = token.token
     session[:refresh_token] = token.refresh_token
     erb :refresh
-  end
-
-  get '/api/companies' do
-    result = allcompanies(params[:splat].join('/'), request.query_string)
-    json JSON.parse(result.allcompanies)
   end
 
   get '/api/*' do
@@ -163,7 +156,7 @@ __END__
           <a href='/api/vapid/me'>/api/vapid/me</a>
         </li>
         <li>
-          <a href='/api/vapid/projects?{'@company_id'}'>/api/vapid/projects</a>
+          <a href='/api/vapid/projects?{'9340'}'>/api/vapid/projects</a>
         </li>
         <li>
           <a href='/api/oauth/token/info'>/api/oauth/tokens/info</a>
