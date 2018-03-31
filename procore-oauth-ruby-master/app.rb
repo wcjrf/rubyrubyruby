@@ -163,7 +163,7 @@ __END__
           <a href='/api/vapid/me'>/api/vapid/me</a>
         </li>
         <li>
-          <a href='/api/vapid/projects?{@company_id}'>/api/vapid/projects</a>
+          <a href='/api/vapid/projects?{'company_id'}'>/api/vapid/projects</a>
         </li>
         <li>
           <a href='/api/oauth/token/info'>/api/oauth/tokens/info</a>
