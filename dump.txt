@@ -1,0 +1,51 @@
+Class Remotegem
+
+  include HTTParty
+
+  base_uri ENV.('PROCORE_API_URL')
+
+  attr_accessor :company_id, :company_name, :active
+
+  def lewiscompanies(company_id, company_name, active)
+    self.company_id = company_id
+    self.company_name = company_name
+    self.active = active
+  end
+
+  def self.find(company_id)
+      response = get("/companies/#{name}.json")
+      if response.success?
+        self.new(response["company_id"], response["company_name"], response["active"])
+      else
+        # this just raises the net/http response that was raised
+        raise response.response
+      end
+  end
+
+  POST SQL PORT 5432
+
+  def lewiscompanies(company_id, company_name, active)
+    self.company_id = company_id
+    self.company_name = company_name
+    self.active = active
+  end
+
+  def allcompanies
+    HTTParty.get("#{client.site}/companies?#{query_string}",
+      headers: {
+        'Authorization' => "Bearer #{session[:access_token]}",
+        'Accept' => 'application/json',
+      })
+
+      def company_id
+        response = self.class.get("/vapid/companies/#{company_id}.json")
+        if response.success?
+          response
+        else
+          raise response
+        end
+      end
+
+  end
+
+  APACHE PORT 8080
