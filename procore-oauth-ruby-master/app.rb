@@ -35,6 +35,8 @@ class App < Sinatra::Base
       })
   end
 
+attr_accessor :company_id, :company_name, :active
+
   get '/' do
     erb :home
   end
@@ -63,11 +65,15 @@ class App < Sinatra::Base
     erb :refresh
   end
 
+  get '/api/companies' do
+    result = allcompanies(params[:splat].join('/'), request.query_string)
+    json JSON.parse(result.allcompanies)
+  end
+
   get '/api/*' do
     result = authorized_api_request(params[:splat].join('/'), request.query_string)
     json JSON.parse(result.body)
   end
-
 
 
 end
@@ -151,6 +157,9 @@ __END__
       <ul class='list'>
         <li>
           <a href='/api/vapid/companies'>/api/vapid/companies</a>
+        </li>
+        <li>
+          <a href='/api/vapid/me'>/api/vapid/me</a>
         </li>
         <li>
           <a href='/api/oauth/token/info'>/api/oauth/tokens/info</a>
