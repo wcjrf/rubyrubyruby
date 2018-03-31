@@ -36,6 +36,7 @@ class App < Sinatra::Base
   end
 
 attr_accessor :company_id, :company_name, :active
+  @company_id = 9340
 
   get '/' do
     erb :home
@@ -160,6 +161,9 @@ __END__
         </li>
         <li>
           <a href='/api/vapid/me'>/api/vapid/me</a>
+        </li>
+        <li>
+          <a href='/api/vapid/projects?{company_id}'>/api/vapid/me</a>
         </li>
         <li>
           <a href='/api/oauth/token/info'>/api/oauth/tokens/info</a>
