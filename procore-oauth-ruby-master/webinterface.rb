@@ -1,6 +1,8 @@
+require 'sinatra'
 require 'sinatra/reloader' if development?
 require 'pry' if development?
 require 'json'
+
 
 class App < Sinatra::Base
   set :sessions, true

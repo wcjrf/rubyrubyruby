@@ -4,5 +4,6 @@ Bundler.require
 Dotenv.load
 
 require './app'
+run Sinatra::Application
 
 run App
