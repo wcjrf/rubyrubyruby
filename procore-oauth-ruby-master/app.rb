@@ -99,8 +99,8 @@ __END__
           var authHeader = 'Bearer <%= session[:access_token] %>'
         </script>
         <!-- <script src="xmlhttp_request_example.js" charset="utf-8"></script>-->
-        <!-- <script src="fetch_example.js" charset="utf-8"></script>-->
-        <script src="superagent_example.js" charset="utf-8"></script>
+        <script src="fetch_example.js" charset="utf-8"></script>
+        <!-- <script src="superagent_example.js" charset="utf-8"></script> -->
       <% end %>
     </head>
     <body>
